@@ -3,36 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dentbot - Patient Registration</title>
+    <title>Dentbot Chat</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to Dentbot</h1>
-        <p>Please fill in the details below for registration:</p>
+    <div class="content">
+        <!-- Blank page content goes here -->
+    </div>
 
-        <form id="registrationForm">
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="age">Age:</label>
-            <input type="number" id="age" name="age" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone" required>
-
-            <label for="medical-history">Medical History (if any):</label>
-            <textarea id="medical-history" name="medicalHistory"></textarea>
-
-            <button type="submit">Submit</button>
-        </form>
-
-        <div id="message"></div>
+    <!-- Chatbot button in the bottom-right corner -->
+    <div class="chatbot-container">
+        <button class="chatbot-btn" onclick="toggleChat()">Chat with Dentbot</button>
+        <div class="chatbot-box" id="chatbotBox">
+            <div class="chatbot-header">
+                <h3>Dentbot</h3>
+                <button onclick="toggleChat()">X</button>
+            </div>
+            <div class="chatbot-body">
+                <div id="chatbotMessages"></div>
+                <input type="text" id="chatInput" placeholder="Type your message here..." onkeypress="sendMessage(event)">
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+
