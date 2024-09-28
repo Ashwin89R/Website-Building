@@ -1,51 +1,34 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+function toggleChat() {
+    const chatbotBox = document.getElementById("chatbotBox");
+    if (chatbotBox.style.display === "none" || chatbotBox.style.display === "") {
+        chatbotBox.style.display = "block";
+    } else {
+        chatbotBox.style.display = "none";
+    }
 }
 
-.container {
-    width: 50%;
-    margin: 50px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+function sendMessage(event) {
+    if (event.key === "Enter") {
+        const chatInput = document.getElementById("chatInput");
+        const message = chatInput.value;
+        if (message.trim() !== "") {
+            const chatMessages = document.getElementById("chatbotMessages");
 
-h1 {
-    text-align: center;
-}
+            // Create a new message div
+            const newMessage = document.createElement("div");
+            newMessage.textContent = "You: " + message;
+            chatMessages.appendChild(newMessage);
 
-label {
-    display: block;
-    margin: 10px 0 5px;
-}
+            // Clear the input field
+            chatInput.value = "";
 
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0 20px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-#message {
-    margin-top: 20px;
-    color: green;
+            // Auto-reply from Dentbot
+            setTimeout(() => {
+                const botMessage = document.createElement("div");
+                botMessage.textContent = "Dentbot: How can I assist you?";
+                chatMessages.appendChild(botMessage);
+                chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to the latest message
+            }, 500);
+        }
+    }
 }
